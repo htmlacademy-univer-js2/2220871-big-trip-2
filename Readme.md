@@ -3,6 +3,7 @@
 * Студент: [Анна Чупшева](https://up.htmlacademy.ru/univer-js2/2/user/2220871).
 * Наставник: [Евгений Лепёшкин](https://htmlacademy.ru/profile/spearance).
 
+
 ---
 
 _Не удаляйте и не изменяйте папки и файлы:_
