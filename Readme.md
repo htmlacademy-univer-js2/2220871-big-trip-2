@@ -1,7 +1,8 @@
 # Проект «Большое путешествие»
 
 * Студент: [Анна Чупшева](https://up.htmlacademy.ru/univer-js2/2/user/2220871).
-* Наставник: `Неизвестно`.
+* Наставник: [Евгений Лепёшкин](https://htmlacademy.ru/profile/spearance).
+
 
 ---
 
