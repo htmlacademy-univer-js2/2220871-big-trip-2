@@ -34,7 +34,7 @@ const generateCity = () =>
 CITIES[getRandomInteger(0, CITIES.length - 1)];
 
 const generateSrc = () =>
-`http://picsum.photos/300/200?r=${getRandomInteger()}`;
+`http://picsum.photos/300/200?r=${getRandomInteger(1, 10)}`;
 
 const generateDestination = () => ({
     'id': 1,
@@ -43,7 +43,7 @@ const generateDestination = () => ({
     'pictures': [
       {
         'src': generateSrc(),
-        'description': this.description
+        'description': generateDescription(),
       }
     ]
   });
