@@ -1,17 +1,14 @@
 import { createElement } from '../render';
-import { humanizeDate, humanizeTime } from '../presenter/util';
-import OffersByType from '../fish_data/offer';
-import Destinations from '../fish_data/destination';
+import { humanizeDate, humanizeTime } from'../presenter/util';
 
-const createEditPointTemplate = (point) => {
+
+const createEditPointTemplate = (point, currentOffers, currentDestination) => {
   const {
     type,
     basePrice,
-    destination,
     dateFrom,
     dateTo,
     offers} = point;
-
 
   const checkTypePoint = (currentType) => {
 
@@ -47,37 +44,19 @@ const createEditPointTemplate = (point) => {
   };
 
   const createOffersElement = () => {
-    let container = '';
+    const offersView = currentOffers.map(getTemplateOffer);
 
-    if (offers.length === 0) {
-      return '';
-    } else {
-      const currentOffers = OffersByType.find((x) => x.type === type);
-      for (let i = 0; i < currentOffers['offers'].length; i++) {
-        container += getTemplateOffer(currentOffers['offers'][i]);
-      }
-    }
-    return container;
+    return offersView.join(' ');
   };
-
-  const getDestinationDate = () => Destinations.find((x) => x.id === destination);
 
   const getTemplatePhoto = (photo) => (
     `<img class="event__photo" src="${photo['src']}" alt="Event photo">`
   );
 
   const createPhotosElement = () => {
-    let container = '';
-    const currentDesctination = getDestinationDate();
+    const photosView = currentDestination['pictures'].map(getTemplatePhoto);
 
-    if (currentDesctination['pictures'].length === 0) {
-      return '';
-    } else {
-      for (let i = 0; i < currentDesctination['pictures'].length; i++) {
-        container += getTemplatePhoto(currentDesctination['pictures'][i]);
-      }
-    }
-    return container;
+    return photosView.join(' ');
   };
 
   return(
@@ -136,7 +115,7 @@ const createEditPointTemplate = (point) => {
               <label class="event__label  event__type-output" for="event-destination-1">
               ${type}
               </label>
-              <input class="event__input  event__input--destination" id="event-destination-1" type="text" name="event-destination" value="${getDestinationDate()['name']}" list="destination-list-1">
+              <input class="event__input  event__input--destination" id="event-destination-1" type="text" name="event-destination" value="${currentDestination['name']}" list="destination-list-1">
               <datalist id="destination-list-1">
               <option value="Amsterdam"></option>
               <option value="Geneva"></option>
@@ -170,7 +149,7 @@ const createEditPointTemplate = (point) => {
           </section>
           <section class="event__section  event__section--destination">
               <h3 class="event__section-title  event__section-title--destination">Destination</h3>
-              <p class="event__destination-description">${getDestinationDate()['description']}</p>
+              <p class="event__destination-description">${currentDestination['description']}</p>
               <div class="event__photos-container">
               <div class="event__photos-tape">
                 ${createPhotosElement()}
@@ -184,26 +163,26 @@ const createEditPointTemplate = (point) => {
 };
 
 class EditPointView {
-
-  getTemplate() {
-    return createEditPointTemplate(this.point);
+  constructor(point, offers, destination) {
+    this._point = point;
+    this._offers = offers;
+    this._destination = destination;
   }
 
-  getElement() {
-    if(!this.element) {
-      this.element = createElement(this.getTemplate());
+  get _template() {
+    return createEditPointTemplate(this._point, this._offers, this._destination);
+  }
+
+  get element() {
+    if(!this._element) {
+      this._element = createElement(this._template);
     }
-    return this.element;
+    return this._element;
   }
 
   removeElement() {
-    this.element = null;
-  }
-
-  constructor(point) {
-    this.point = point;
+    this._element = null;
   }
 }
-
 
 export default EditPointView;
