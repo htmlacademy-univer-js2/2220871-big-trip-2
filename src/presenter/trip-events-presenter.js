@@ -1,8 +1,10 @@
-import { render } from '../render';
+import { render, RenderPosition } from '../framework/render';
 import EditPointView from '../view/edit-point-view';
 import PointsListView from '../view/points-list-view';
 import SortView from '../view/sort-view';
 import PointView from '../view/point-view';
+import EmptyPointsListView from '../view/empty-points-list-view';
+import InfoView from '../view/info-view';
 
 export default class Trip {
   #pointsListComponent = new PointsListView();
@@ -38,18 +40,17 @@ export default class Trip {
       }
     };
 
-    pointElement.element.querySelector('.event__rollup-btn').addEventListener('click', () => {
+    pointElement.setEditClickHandler(() => {
       replacePointToForm();
       document.addEventListener('keydown', onEscKeyDown);
     });
 
-    editFormElement.element.querySelector('.event__rollup-btn').addEventListener('click', () => {
+    editFormElement.setSaveClickHandler(() => {
       replaceFormToPoint();
-      document.removeEventListener('keydown', onEscKeyDown);
+      document.addEventListener('keydown', onEscKeyDown);
     });
 
     editFormElement.element.querySelector('.event__save-btn').addEventListener('click', (evt) => {
-      evt.preventDefault();
       replaceFormToPoint();
       document.removeEventListener('keydown', onEscKeyDown);
     });
@@ -62,11 +63,16 @@ export default class Trip {
     this.#destinations = [...this.#pointsModel.destinations];
     this.#offersByType = [...this.#pointsModel.offersByType];
 
-    render(new SortView(), this.#container);
-    render(this.#pointsListComponent, this.#container);
+    if (this.#points.length === 0) {
+      render(new EmptyPointsListView(), this.#container);
+    } else {
+      render(new InfoView(), document.querySelector('.trip-main'), RenderPosition.AFTERBEGIN);
+      render(new SortView(), this.#container);
+      render(this.#pointsListComponent, this.#container);
 
-    for (let i = 0; i < this.#points.length; i++) {
-      this.#renderPoint(this.#points[i]);
+      for (let i = 0; i < this.#points.length; i++) {
+        this.#renderPoint(this.#points[i]);
+      }
     }
   }
 }
