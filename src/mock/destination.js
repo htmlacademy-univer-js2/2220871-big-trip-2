@@ -1,6 +1,6 @@
-import { randomInteger } from '../presenter/utils';
+import { randomInteger } from '../utils';
 
-const descriptions = ['Просто бомба', 'Smth idk', 'OK'];
+const descriptions = ['куда я прилетел?', 'ёмае', 'что за дыра'];
 const names = ['LA', 'Moscow', 'Berlin', 'London', 'Paris', 'Rome', 'Madrid'];
 
 export const createDestination = (id) => ({

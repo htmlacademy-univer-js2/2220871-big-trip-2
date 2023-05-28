@@ -1,4 +1,4 @@
-import { randomInteger } from '../presenter/utils';
+import { randomInteger } from '../utils';
 import { createOffer } from './offer';
 
 const offerTypes = ['taxi', 'bus', 'train', 'ship', 'drive', 'flight', 'check-in', 'sightseeing', 'restaurant'];
