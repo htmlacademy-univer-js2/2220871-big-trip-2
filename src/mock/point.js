@@ -1,4 +1,4 @@
-import { randomInteger } from '../presenter/utils';
+import { randomInteger } from '../utils';
 import dayjs from 'dayjs';
 
 const dayjsTypes = ['d', 'h'];

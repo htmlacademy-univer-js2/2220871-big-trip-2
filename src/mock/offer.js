@@ -1,4 +1,4 @@
-import { randomInteger } from '../presenter/utils';
+import { randomInteger } from '../utils';
 
 const titles = ['First', 'Business', 'SAMOLET'];
 

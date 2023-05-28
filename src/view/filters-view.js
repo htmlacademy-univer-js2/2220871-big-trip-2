@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import AbsractView from '../framework/view/abstract-view';
-import { isDateBefore } from '../presenter/utils';
+import { isDateBefore } from '../utils';
 
 var relativeTime = require('dayjs/plugin/relativeTime');
 dayjs.extend(relativeTime);
