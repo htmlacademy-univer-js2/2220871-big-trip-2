@@ -3,7 +3,7 @@ import { upperCaseFirst } from '../utils';
 import dayjs from 'dayjs';
 import flatpickr from 'flatpickr';
 
-//import 'flatpickr/dist/flatpickr.min.css';
+import 'flatpickr/dist/flatpickr.min.css';
 
 const BLANK_POINT = {
   basePrice: 0,
