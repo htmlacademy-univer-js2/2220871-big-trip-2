@@ -53,3 +53,4 @@ const FilterFunctions = {
 };
 
 export { humanizeDateTime, upperCaseFirst, isFirstDateBeforeSecond, SortFunctions, FilterFunctions };
+
