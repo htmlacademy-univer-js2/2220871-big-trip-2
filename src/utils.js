@@ -52,4 +52,8 @@ const FilterFunctions = {
   },
 };
 
+<<<<<<< Updated upstream
 export { humanizeDateTime, upperCaseFirst, isDateBefore, SortFunctions, FilterFunctions };
+=======
+export { humanizeDateTime, upperCaseFirst, isFirstDateBeforeSecond, SortFunctions, FilterFunctions };
+>>>>>>> Stashed changes
