@@ -15,6 +15,7 @@ const humanizeDateTime = (dateFrom, dateTo) => {
   const oneDayInMilliseconds = 24 * oneHourInMilliseconds;
 
   const datetimeBetween = dateTo.diff(dateFrom);
+  
   if (datetimeBetween > oneDayInMilliseconds) {
     return `${parseInt(datetimeBetween / oneDayInMilliseconds, 10)}D ${parseInt(
       (datetimeBetween % oneDayInMilliseconds) / oneHourInMilliseconds,
