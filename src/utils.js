@@ -14,7 +14,7 @@ const humanizeDateTime = (dateFrom, dateTo) => {
   const oneHourInMilliseconds = 60 * oneMinuteInMilliseconds;
   const oneDayInMilliseconds = 24 * oneHourInMilliseconds;
 
-  const datetimeBetween = dateTo.diff(dateFrom);  // guide-line error
+  const datetimeBetween = dateTo.diff(dateFrom);
   if (datetimeBetween > oneDayInMilliseconds) {
     return `${parseInt(datetimeBetween / oneDayInMilliseconds, 10)}D ${parseInt(
       (datetimeBetween % oneDayInMilliseconds) / oneHourInMilliseconds,
@@ -25,9 +25,8 @@ const humanizeDateTime = (dateFrom, dateTo) => {
       (datetimeBetween % oneHourInMilliseconds) / oneMinuteInMilliseconds,
       10
     )}M`;
-  } else {
-    return `${parseInt((datetimeBetween % oneHourInMilliseconds) / oneMinuteInMilliseconds, 10)}M`;
   }
+  return `${parseInt((datetimeBetween % oneHourInMilliseconds) / oneMinuteInMilliseconds, 10)}M`;
 };
 
 const isFirstDateBeforeSecond = (dateFrom, dateTo) => dayjs(dateTo).diff(dayjs(dateFrom)) > 0;
@@ -53,3 +52,4 @@ const FilterFunctions = {
 };
 
 export { humanizeDateTime, capitalizeFirst, isFirstDateBeforeSecond, SortFunctions, FilterFunctions };
+
