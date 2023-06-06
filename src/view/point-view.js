@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { humanizeDateTime, upperCaseFirst } from '../utils';
+import { humanizeDateTime, capitalizeFirst } from '../utils';
 import AbstractView from '../framework/view/abstract-view';
 
 const createOffersTemplate = (offers, type, activeOffersIds) => {
@@ -34,7 +34,7 @@ const createPointTemplate = (point, destinations, offersByType) => {
       <div class="event__type">
         <img class="event__type-icon" width="42" height="42" src="img/icons/${type}.png" alt="Event type icon">
       </div>
-      <h3 class="event__title">${upperCaseFirst(type)} ${destinationName}</h3>
+      <h3 class="event__title">${capitalizeFirst(type)} ${destinationName}</h3>
       <div class="event__schedule">
         <p class="event__time">
           <time class="event__start-time" datetime="${dateFrom}">${dateFrom.format('HH:mm')}</time>

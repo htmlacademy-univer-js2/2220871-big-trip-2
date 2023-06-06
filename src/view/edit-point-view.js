@@ -1,5 +1,5 @@
 import AbstractStatefulView from '../framework/view/abstract-stateful-view';
-import { isFirstDateBeforeSecond, upperCaseFirst } from '../utils';
+import { isFirstDateBeforeSecond, capitalizeFirst } from '../utils';
 import dayjs from 'dayjs';
 import flatpickr from 'flatpickr';
 
@@ -56,7 +56,7 @@ const createTypesTemplate = (offersByType) => {
     <div class="event__type-item">
       <input id="event-type-${type}-1" class="event__type-input  visually-hidden" type="radio" name="event-type" value="${type}">
       <label class="event__type-label  event__type-label--${type}" for="event-type-${type}-1">
-      ${upperCaseFirst(type)}</label>
+      ${capitalizeFirst(type)}</label>
     </div>`
     )
     .join('\n');
@@ -118,7 +118,7 @@ const createEditPointTemplate = (point, destinations, offersByType) => {
         </div>
         <div class="event__field-group  event__field-group--destination">
           <label class="event__label  event__type-output" for="event-destination-1">
-            ${upperCaseFirst(type)}
+            ${capitalizeFirst(type)}
           </label>
           <input class="event__input  event__input--destination" id="event-destination-1" type="text" name="event-destination"
             value="${destination.name}" list="destination-list-1" ${isDisabled ? 'disabled' : ''}>

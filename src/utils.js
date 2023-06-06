@@ -1,7 +1,7 @@
 import { FilterType, SortType } from './const';
 import dayjs from 'dayjs';
 
-function upperCaseFirst(str) {
+function capitalizeFirst(str) {
   if (!str) {
     return str;
   }
@@ -52,5 +52,4 @@ const FilterFunctions = {
   },
 };
 
-export { humanizeDateTime, upperCaseFirst, isFirstDateBeforeSecond, SortFunctions, FilterFunctions };
-
+export { humanizeDateTime, capitalizeFirst, isFirstDateBeforeSecond, SortFunctions, FilterFunctions };

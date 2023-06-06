@@ -1,12 +1,12 @@
 import AbsractView from '../framework/view/abstract-view';
-import { upperCaseFirst } from '../utils';
+import { capitalizeFirst } from '../utils';
 
 const createFilterItemTemplate = (filter, currentFilter) => `
     <div class="trip-filters__filter">
       <input id="filter-everything" class="trip-filters__filter-input  visually-hidden" type="radio" name="trip-filter"
       ${filter.type === currentFilter ? 'checked' : ''} ${filter.isEmpty ? 'disabled' : ''}>
       <label class="trip-filters__filter-label" for="filter-${filter.type}" data-name="${filter.type}" 
-      data-disabled="${filter.isEmpty ? 'true' : 'false'}">${upperCaseFirst(filter.type)}</label>
+      data-disabled="${filter.isEmpty ? 'true' : 'false'}">${capitalizeFirst(filter.type)}</label>
     </div>
   `;
 
