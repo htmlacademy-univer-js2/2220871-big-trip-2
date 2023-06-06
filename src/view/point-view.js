@@ -1,20 +1,17 @@
 import dayjs from 'dayjs';
-import { humanizeDateTime, upperCaseFirst } from '../utils';
+import { humanizeDateTime, capitalizeFirst } from '../utils';
 import AbstractView from '../framework/view/abstract-view';
 
 const createOffersTemplate = (offers, type, activeOffersIds) => {
   const offersByType = offers.find((offer) => offer.type === type).offers;
-  return offersByType
-    .map((offer) =>
-      activeOffersIds.includes(offer.id)
-        ? `<li class="event__offer">
+  return offersByType.map((offer) =>
+    activeOffersIds.includes(offer.id)? `
+      <li class="event__offer">
         <span class="event__offer-title">${offer.title}</span>
         &plus;
         &euro;&nbsp;<span class="event__offer-price">${offer.price}</span>
-      </li>`.trim()
-        : ''
-    )
-    .join('\n');
+      </li>
+    `.trim() : '').join('\n');
 };
 
 const createPointTemplate = (point, destinations, offersByType) => {
@@ -28,13 +25,14 @@ const createPointTemplate = (point, destinations, offersByType) => {
 
   const activeOffersTemplate = createOffersTemplate(offersByType, type, offers);
 
-  return `<li class="trip-events__item">
+  return `
+  <li class="trip-events__item">
     <div class="event">
       <time class="event__date" datetime="2019-03-18">${dateFrom.format('MMM D')}</time>
       <div class="event__type">
         <img class="event__type-icon" width="42" height="42" src="img/icons/${type}.png" alt="Event type icon">
       </div>
-      <h3 class="event__title">${upperCaseFirst(type)} ${destinationName}</h3>
+      <h3 class="event__title">${capitalizeFirst(type)} ${destinationName}</h3>
       <div class="event__schedule">
         <p class="event__time">
           <time class="event__start-time" datetime="${dateFrom}">${dateFrom.format('HH:mm')}</time>
